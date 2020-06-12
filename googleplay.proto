@@ -107,7 +107,7 @@ message BookSubject {
 message BrowseLink {
     optional string name = 1;
     optional string dataUrl = 3;
-    optional string serverLogsCookie = 4;
+    optional bytes serverLogsCookie = 4;
 }
 message BrowseResponse {
     optional string contentsUrl = 1;
@@ -115,14 +115,14 @@ message BrowseResponse {
     repeated BrowseLink category = 3;
     repeated BrowseLink breadcrumb = 4;
     repeated QuickLink quickLink = 5;
-    optional string serverLogsCookie = 6;
+    optional bytes serverLogsCookie = 6;
 }
 message QuickLink {
     optional string name = 1;
     optional Image image = 2;
     optional ResolvedLink link = 3;
     optional bool displayRequired = 4;
-    optional string serverLogsCookie = 5;
+    optional bytes serverLogsCookie = 5;
     optional int32 backendId = 6;
     optional bool prismStyle = 7;
 }
@@ -168,7 +168,7 @@ message BuyResponse {
     optional string confirmButtonText = 51;
     optional string permissionErrorTitleText = 52;
     optional string permissionErrorMessageText = 53;
-    optional string serverLogsCookie = 54;
+    optional bytes serverLogsCookie = 54;
     optional string encodedDeliveryToken = 55;
 }
 message LineItem {
@@ -366,7 +366,7 @@ message LogEvent {
     optional string tag = 2;
     repeated LogEventKeyValues value = 3;
     optional PlayStoreLogEvent store = 4;
-    optional string sourceExtension = 6;
+    optional bytes sourceExtension = 6;
     optional ActiveExperiments exp = 7;
 }
 message LogEventKeyValues {
@@ -378,7 +378,7 @@ message LogRequest {
     optional int32 logSource = 2;
     repeated LogEvent logEvent = 3;
     optional int64 requestTimeMs = 4;
-    optional string serializedLogEvents = 5;
+    optional bytes serializedLogEvents = 5;
 }
 message LogResponse {
     optional int64 nextRequestWaitMillis = 1;
@@ -599,7 +599,7 @@ message ContainerView {
     optional bool selected = 1;
     optional string title = 2;
     optional string listUrl = 3;
-    optional string serverLogsCookie = 4;
+    optional bytes serverLogsCookie = 4;
 }
 message FlagContentResponse {
 }
@@ -610,25 +610,25 @@ message ClientDownloadRequest {
     }
     message CertificateChain {
         message Element {
-            optional string certificate = 1;
+            optional bytes certificate = 1;
             optional bool parsedSuccessfully = 2;
-            optional string subject = 3;
-            optional string issuer = 4;
-            optional string fingerprint = 5;
+            optional bytes subject = 3;
+            optional bytes issuer = 4;
+            optional bytes fingerprint = 5;
             optional int64 expiryTime = 6;
             optional int64 startTime = 7;
         }
         repeated Element element = 1;
     }
     message Digests {
-        optional string sha256 = 1;
-        optional string sha1 = 2;
-        optional string md5 = 3;
+        optional bytes sha256 = 1;
+        optional bytes sha1 = 2;
+        optional bytes md5 = 3;
     }
     message Resource {
         optional string url = 1;
         optional int32 type = 2;
-        optional string remoteIp = 3;
+        optional bytes remoteIp = 3;
         optional string referrer = 4;
     }
     message SignatureInfo {
@@ -657,11 +657,11 @@ message ClientDownloadResponse {
     }
     optional int32 verdict = 1;
     optional MoreInfo moreInfo = 2;
-    optional string token = 3;
+    optional bytes token = 3;
 }
 message ClientDownloadStatsRequest {
     optional int32 userDecision = 1;
-    optional string token = 2;
+    optional bytes token = 2;
 }
 message DebugInfo {
     repeated string message = 1;
@@ -697,7 +697,7 @@ message DetailsResponse {
     optional Review userReview = 3;
     optional DocV2 docV2 = 4;
     optional string footerHtml = 5;
-    optional string serverLogsCookie = 6;
+    optional bytes serverLogsCookie = 6;
     repeated DiscoveryBadge discoveryBadge = 7;
 }
 
@@ -706,7 +706,7 @@ message DiscoveryBadge {
     optional Image image = 2;
     optional int32 backgroundColor = 3;
     optional DiscoveryBadgeLink discoveryBadgeLink = 4;
-    optional string serverLogsCookie = 5;
+    optional bytes serverLogsCookie = 5;
     optional bool isPlusOne = 6;
     optional float aggregateRating = 7;
     optional int32 userStarRating = 8;
@@ -961,7 +961,7 @@ message AppDetails {
     optional int32 versionCode = 3;
     optional string versionString = 4;
     optional string title = 5;
-    repeated string appCategory = 48;
+    repeated string appCategory = 45;
     optional int32 contentRating = 8;
     optional int64 installationSize = 9;
     repeated string permission = 10;
@@ -1220,7 +1220,7 @@ message DocV2 {
     optional bool detailsReusable = 21;
     optional string subtitle = 22;
     optional string translatedDescriptionHtml = 23;
-    optional string serverLogsCookie = 24;
+    optional bytes serverLogsCookie = 24;
     optional ProductDetails productDetails = 25;
     optional bool mature = 26;
     optional string promotionalDescription = 27;
@@ -1341,14 +1341,14 @@ message LibrarySubscriptionDetails {
 message LibraryUpdate {
     optional int32 status = 1;
     optional int32 corpus = 2;
-    optional string serverToken = 3;
+    optional bytes serverToken = 3;
     repeated LibraryMutation mutation = 4;
     optional bool hasMore = 5;
     optional string libraryId = 6;
 }
 message ClientLibraryState {
     optional int32 corpus = 1;
-    optional string serverToken = 2;
+    optional bytes serverToken = 2;
     optional int64 hashCodeSum = 3;
     optional int32 librarySize = 4;
     optional string libraryId = 5;
@@ -1443,7 +1443,7 @@ message PlayStoreBackgroundActionEvent {
     optional string reason = 3;
     optional int32 errorCode = 4;
     optional string exceptionType = 5;
-    optional string serverLogsCookie = 6;
+    optional bytes serverLogsCookie = 6;
     optional int32 offerType = 7;
     optional int32 fromSetting = 8;
     optional int32 toSetting = 9;
@@ -1492,7 +1492,7 @@ message PlayStoreSessionData {
 }
 message PlayStoreUiElement {
     optional int32 type = 1;
-    optional string serverLogsCookie = 2;
+    optional bytes serverLogsCookie = 2;
     optional PlayStoreUiElementInfo clientLogsCookie = 3;
     repeated PlayStoreUiElement child = 4;
 }
@@ -1532,14 +1532,14 @@ message CommitPurchaseResponse {
     optional Challenge challenge = 2;
     repeated LibraryUpdate libraryUpdate = 3;
     optional AndroidAppDeliveryData appDeliveryData = 4;
-    optional string serverLogsCookie = 5;
+    optional bytes serverLogsCookie = 5;
 }
 message PreparePurchaseResponse {
     optional PurchaseStatus purchaseStatus = 1;
     optional Challenge challenge = 2;
     optional ClientCart cart = 3;
     repeated LibraryUpdate libraryUpdate = 4;
-    optional string serverLogsCookie = 5;
+    optional bytes serverLogsCookie = 5;
 }
 message PurchaseStatus {
     optional int32 statusCode = 1;
@@ -1581,7 +1581,7 @@ message ResolvedLink {
     optional DirectPurchase directPurchase = 4;
     optional string homeUrl = 5;
     optional RedeemGiftCard redeemGiftCard = 6;
-    optional string serverLogsCookie = 7;
+    optional bytes serverLogsCookie = 7;
     optional Docid docid = 8;
     optional string wishlistUrl = 9;
     optional int32 backend = 10;
@@ -1677,7 +1677,7 @@ message ModuleDeliveryResponse  {}
 
 message PreFetch {
     optional string url = 1;
-    optional string response = 2;
+    optional bytes response = 2;
     optional string etag = 3;
     optional int64 ttl = 4;
     optional int64 softTtl = 5;
@@ -1741,7 +1741,7 @@ message SearchResponse {
     repeated Bucket bucket = 4;
     repeated DocV2 doc = 5;
     repeated RelatedSearch relatedSearch = 6;
-    optional string serverLogsCookie = 7;
+    optional bytes serverLogsCookie = 7;
 }
 message BillingConfig {
     optional CarrierBillingConfig carrierBillingConfig = 1;
@@ -2099,8 +2099,8 @@ message GetCarrierInfoRequestProto {
 }
 message GetCarrierInfoResponseProto {
     optional bool carrierChannelEnabled = 1;
-    optional string carrierLogoIcon = 2;
-    optional string carrierBanner = 3;
+    optional bytes carrierLogoIcon = 2;
+    optional bytes carrierBanner = 3;
     optional string carrierSubtitle = 4;
     optional string carrierTitle = 5;
     optional int32 carrierImageDensity = 6;
@@ -2121,7 +2121,7 @@ message GetImageRequestProto {
     optional int32 productType = 8;
 }
 message GetImageResponseProto {
-    optional string imageData = 1;
+    optional bytes imageData = 1;
     optional int32 imageDensity = 2;
 }
 message GetMarketMetadataRequestProto {
@@ -2511,7 +2511,7 @@ message RiskHeaderInfoProto {
 message SignatureHashProto {
     optional string packageName = 1;
     optional int32 versionCode = 2;
-    optional string hash = 3;
+    optional bytes hash = 3;
 }
 message SignedDataProto {
     optional string signedData = 1;
@@ -2608,4 +2608,3 @@ message CriticReviewsResponse {
     optional Link source = 6;
     repeated Review review = 7;
 }
-
