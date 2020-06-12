@@ -961,7 +961,7 @@ message AppDetails {
     optional int32 versionCode = 3;
     optional string versionString = 4;
     optional string title = 5;
-    repeated string appCategory = 45;
+    repeated string appCategory = 48;
     optional int32 contentRating = 8;
     optional int64 installationSize = 9;
     repeated string permission = 10;
